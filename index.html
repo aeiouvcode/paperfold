@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Paperfold — compress a PDF</title>
+<meta name="description" content="Compress PDF files right on your device. No upload, no sign-up, free.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="wrap">
+  <header class="top">
+    <div class="wordmark">Paperfold</div>
+    <p class="tagline">Make a PDF smaller. It never leaves your device.</p>
+  </header>
+
+  <section id="picker" class="picker">
+    <label class="drop" id="drop">
+      <input type="file" id="file" accept="application/pdf,.pdf">
+      <div class="drop-inner">
+        <div class="drop-title">Choose a PDF</div>
+        <div class="drop-sub">or drop it here</div>
+      </div>
+    </label>
+  </section>
+
+  <section id="work" class="work hidden">
+    <div class="filecard">
+      <div class="filename" id="fileName"></div>
+      <div class="filesize" id="fileSize"></div>
+      <button class="link" id="changeFile" type="button">change file</button>
+    </div>
+
+    <div class="levels" role="radiogroup" aria-label="Compression level">
+      <button class="level" data-level="light" type="button">
+        <span class="level-name">Light</span>
+        <span class="level-desc">near-original quality</span>
+      </button>
+      <button class="level sel" data-level="balanced" type="button">
+        <span class="level-name">Balanced</span>
+        <span class="level-desc">best for most files</span>
+      </button>
+      <button class="level" data-level="max" type="button">
+        <span class="level-name">Max</span>
+        <span class="level-desc">smallest, text not selectable</span>
+      </button>
+    </div>
+
+    <div class="region-tool hidden" id="regionTool">
+      <p class="region-intro">Keep one area on page 1 at twice the resolution. Max compression turns text into an image.</p>
+      <button class="link" id="selectRegion" type="button">Mark a sharp area</button>
+      <div class="region-preview hidden" id="regionPreview">
+        <canvas id="previewCanvas" aria-label="Page 1 preview"></canvas>
+        <div class="region-box hidden" id="regionBox"></div>
+      </div>
+      <button class="link hidden" id="clearRegion" type="button">clear area</button>
+      <p class="region-hint" id="regionHint">Drag on the preview to choose an area. One region per file for now.</p>
+    </div>
+
+    <button class="go" id="go" type="button">Compress</button>
+    <div class="progress hidden" id="progress">
+      <div class="bar"><div class="bar-fill" id="barFill"></div></div>
+      <div class="status" id="status">working…</div>
+    </div>
+  </section>
+
+  <section id="result" class="result hidden">
+    <div class="savings" id="savings"></div>
+    <div class="sizes" id="sizes"></div>
+    <a class="download" id="download" download>Download</a>
+    <button class="link" id="again" type="button">compress another</button>
+  </section>
+
+  <section id="error" class="error hidden"></section>
+
+  <footer class="foot">
+    <p>Everything runs in your browser. No upload, no account, no watermark, no limit.</p>
+  </footer>
+</main>
+<script type="module" src="app.js"></script>
+</body>
+</html>
